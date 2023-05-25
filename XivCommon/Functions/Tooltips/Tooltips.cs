@@ -10,7 +10,7 @@ namespace XivCommon.Functions.Tooltips {
     /// </summary>
     public class Tooltips : IDisposable {
         private static class Signatures {
-            internal const string AgentItemDetailUpdateTooltip = "E8 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 89 AE";
+            internal const string AgentItemDetailUpdateTooltip = "E8 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 89 AE ?? ?? ?? ?? 48 89 AE";
             internal const string AgentActionDetailUpdateTooltip = "E8 ?? ?? ?? ?? EB 68 FF 50 40";
             internal const string SadSetString = "E8 ?? ?? ?? ?? F6 47 14 08";
         }
