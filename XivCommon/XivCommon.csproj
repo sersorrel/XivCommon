@@ -13,7 +13,7 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Title>XivCommon</Title>
-        <Authors>ascclemens</Authors>
+        <Authors>anna</Authors>
         <RepositoryUrl>https://git.anna.lgbt/anna/XivCommon</RepositoryUrl>
         <Description>A set of common functions, hooks, and events not included in Dalamud.</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
