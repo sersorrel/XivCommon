@@ -1,26 +1,7 @@
-﻿using System;
-using Dalamud.Logging;
+using Dalamud.Plugin.Services;
 
-namespace XivCommon {
-    internal static class Logger {
-        private static string Format(string msg) {
-            return $"[XIVCommon] {msg}";
-        }
+namespace XivCommon;
 
-        internal static void Log(string msg) {
-            PluginLog.Log(Format(msg));
-        }
-
-        internal static void LogWarning(string msg) {
-            PluginLog.LogWarning(Format(msg));
-        }
-
-        internal static void LogError(string msg) {
-            PluginLog.LogError(Format(msg));
-        }
-
-        internal static void LogError(Exception ex, string msg) {
-            PluginLog.LogError(ex, Format(msg));
-        }
-    }
+internal static class Logger {
+    internal static IPluginLog Log { get; set; } = null!;
 }

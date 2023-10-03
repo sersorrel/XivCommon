@@ -14,7 +14,7 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Title>XivCommon</Title>
         <Authors>ascclemens</Authors>
-        <RepositoryUrl>https://git.annaclemens.io/ascclemens/XivCommon</RepositoryUrl>
+        <RepositoryUrl>https://git.anna.lgbt/ascclemens/XivCommon</RepositoryUrl>
         <Description>A set of common functions, hooks, and events not included in Dalamud.</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
