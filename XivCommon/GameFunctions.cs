@@ -1,5 +1,5 @@
 ﻿using System;
-using Dalamud.Game;
+using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
@@ -82,16 +82,21 @@ public class GameFunctions : IDisposable {
     /// </summary>
     public Housing Housing { get; }
 
-    internal GameFunctions(Hooks hooks) {
-        Logger.Log = Util.GetService<IPluginLog>();
+    internal GameFunctions(DalamudPluginInterface @interface, Hooks hooks) {
+        var services = @interface.Create<Services>();
+        if (services == null) {
+            throw new Exception("could not create services");
+        }
 
-        this.Framework = Util.GetService<IFramework>();
-        this.GameGui = Util.GetService<IGameGui>();
+        Logger.Log = services.Log;
 
-        var interop = Util.GetService<IGameInteropProvider>();
-        var objectTable = Util.GetService<IObjectTable>();
-        var partyFinderGui = Util.GetService<IPartyFinderGui>();
-        var scanner = Util.GetService<ISigScanner>();
+        this.Framework = services.Framework;
+        this.GameGui = services.GameGui;
+
+        var interop = services.GameInteropProvider;
+        var objectTable = services.ObjectTable;
+        var partyFinderGui = services.PartyFinderGui;
+        var scanner = services.SigScanner;
 
         this.UiAlloc = new UiAlloc(scanner);
         this.Chat = new Chat(scanner);

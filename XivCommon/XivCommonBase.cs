@@ -1,4 +1,5 @@
 ﻿using System;
+using Dalamud.Plugin;
 
 namespace XivCommon; 
 
@@ -20,8 +21,8 @@ public class XivCommonBase : IDisposable {
     /// </para>
     /// </summary>
     /// <param name="hooks">Flags indicating which hooks to enable</param>
-    public XivCommonBase(Hooks hooks = HooksExt.DefaultHooks) {
-        this.Functions = new GameFunctions(hooks);
+    public XivCommonBase(DalamudPluginInterface @interface, Hooks hooks = HooksExt.DefaultHooks) {
+        this.Functions = new GameFunctions(@interface, hooks);
     }
 
     /// <inheritdoc />

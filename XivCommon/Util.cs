@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Plugin;
 
 namespace XivCommon; 
 
@@ -38,12 +36,6 @@ internal static class Util {
 
     internal static void PrintMissingSig(string name) {
         Logger.Log.Warning($"Could not find signature for {name}. This functionality will be disabled.");
-    }
-
-    internal static T GetService<T>() {
-        var service = typeof(IDalamudPlugin).Assembly.GetType("Dalamud.Service`1")!.MakeGenericType(typeof(T));
-        var get = service.GetMethod("Get", BindingFlags.Public | BindingFlags.Static)!;
-        return (T) get.Invoke(null, null)!;
     }
 
     internal static unsafe IntPtr FollowPointerChain(IntPtr start, IEnumerable<int> offsets) {
