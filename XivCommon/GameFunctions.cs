@@ -5,7 +5,6 @@ using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using XivCommon.Functions;
 using XivCommon.Functions.FriendList;
-using XivCommon.Functions.Housing;
 using XivCommon.Functions.NamePlates;
 using XivCommon.Functions.Tooltips;
 using Framework = FFXIVClientStructs.FFXIV.Client.System.Framework.Framework;
@@ -77,11 +76,6 @@ public class GameFunctions : IDisposable {
     /// </summary>
     public Journal Journal { get; }
 
-    /// <summary>
-    /// Housing functions
-    /// </summary>
-    public Housing Housing { get; }
-
     internal GameFunctions(DalamudPluginInterface @interface, Hooks hooks) {
         var services = @interface.Create<Services>();
         if (services == null) {
@@ -110,7 +104,6 @@ public class GameFunctions : IDisposable {
         this.DutyFinder = new DutyFinder(scanner);
         this.Journal = new Journal(scanner);
         this.FriendList = new FriendList();
-        this.Housing = new Housing(scanner);
     }
 
     /// <inheritdoc />

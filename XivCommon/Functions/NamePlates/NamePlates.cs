@@ -15,7 +15,7 @@ namespace XivCommon.Functions.NamePlates;
 /// </summary>
 public class NamePlates : IDisposable {
     private static class Signatures {
-        internal const string NamePlateUpdate = "48 8B C4 41 56 48 81 EC ?? ?? ?? ?? 48 89 58 F0";
+        internal const string NamePlateUpdate = "4C 8B DC 41 56 48 81 EC ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 84 24 ?? ?? ?? ?? 49 8B 40 20";
     }
 
     private unsafe delegate IntPtr NamePlateUpdateDelegate(AddonNamePlate* addon, NumberArrayData** numberData, StringArrayData** stringData);

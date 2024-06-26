@@ -13,7 +13,7 @@ namespace XivCommon.Functions;
 public class Talk : IDisposable {
     private static class Signatures {
         internal const string SetAtkValue = "E8 ?? ?? ?? ?? 41 03 ED";
-        internal const string ShowMessageBox = "4C 8B DC 55 57 41 55 49 8D 6B 98";
+        internal const string ShowMessageBox = "4C 8B DC 55 56 41 55 49 8D 6B 88";
     }
 
     // Updated: 5.5
