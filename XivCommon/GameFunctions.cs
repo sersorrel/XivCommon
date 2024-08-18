@@ -76,7 +76,7 @@ public class GameFunctions : IDisposable {
     /// </summary>
     public Journal Journal { get; }
 
-    internal GameFunctions(DalamudPluginInterface @interface, Hooks hooks) {
+    internal GameFunctions(IDalamudPluginInterface @interface, Hooks hooks) {
         var services = @interface.Create<Services>();
         if (services == null) {
             throw new Exception("could not create services");
@@ -131,7 +131,7 @@ public class GameFunctions : IDisposable {
     /// <returns>Pointer</returns>
     [Obsolete("Use Framework.Instance()->GetUiModule()")]
     public unsafe IntPtr GetUiModule() {
-        return (IntPtr) this.GetFramework()->GetUiModule();
+        return (IntPtr) this.GetFramework()->UIModule;
     }
 
     /// <summary>
@@ -140,7 +140,7 @@ public class GameFunctions : IDisposable {
     /// <returns>Pointer</returns>
     [Obsolete("Use Framework.Instance()->GetUiModule()->GetRaptureAtkModule()")]
     public unsafe IntPtr GetAtkModule() {
-        return (IntPtr) this.GetFramework()->GetUiModule()->GetRaptureAtkModule();
+        return (IntPtr) this.GetFramework()->UIModule->GetRaptureAtkModule();
     }
 
     /// <summary>
@@ -149,7 +149,7 @@ public class GameFunctions : IDisposable {
     /// <returns>Pointer</returns>
     [Obsolete("Use Framework.Instance()->GetUiModule()->GetAgentModule()")]
     public unsafe IntPtr GetAgentModule() {
-        return (IntPtr) this.GetFramework()->GetUiModule()->GetAgentModule();
+        return (IntPtr) this.GetFramework()->UIModule->GetAgentModule();
     }
 
     /// <summary>
@@ -160,7 +160,7 @@ public class GameFunctions : IDisposable {
     /// <exception cref="InvalidOperationException">if the signature for the function could not be found</exception>
     [Obsolete("Use Framework.Instance()->GetUiModule()->GetAgentModule()->GetAgentByInternalId(AgentId)")]
     public unsafe IntPtr GetAgentByInternalId(uint id) {
-        return (IntPtr) this.GetFramework()->GetUiModule()->GetAgentModule()->GetAgentByInternalId((AgentId) id);
+        return (IntPtr) this.GetFramework()->UIModule->GetAgentModule()->GetAgentByInternalId((AgentId) id);
     }
 
     /// <summary>
@@ -170,6 +170,6 @@ public class GameFunctions : IDisposable {
     /// <exception cref="InvalidOperationException">if the signature for the function could not be found</exception>
     [Obsolete("Use AtkStage.GetSingleton()")]
     public unsafe IntPtr GetAtkStageSingleton() {
-        return (IntPtr) AtkStage.GetSingleton();
+        return (IntPtr) AtkStage.Instance();
     }
 }

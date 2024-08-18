@@ -28,7 +28,7 @@ public class PartyFinder : IDisposable {
     /// <summary>
     /// The delegate for party join events.
     /// </summary>
-    public delegate void JoinPfEventDelegate(PartyFinderListing listing);
+    public delegate void JoinPfEventDelegate(IPartyFinderListing listing);
 
     /// <summary>
     /// <para>
@@ -44,7 +44,7 @@ public class PartyFinder : IDisposable {
     private bool JoinsEnabled { get; }
     private bool ListingsEnabled { get; }
     private IntPtr PartyFinderAgent { get; set; } = IntPtr.Zero;
-    private Dictionary<uint, PartyFinderListing> Listings { get; } = new();
+    private Dictionary<uint, IPartyFinderListing> Listings { get; } = new();
     private int LastBatch { get; set; } = -1;
 
     /// <summary>
@@ -58,7 +58,7 @@ public class PartyFinder : IDisposable {
     /// Keys are the listing ID for fast lookup by ID. Values are the listing itself.
     /// </para>
     /// </summary>
-    public IReadOnlyDictionary<uint, PartyFinderListing> CurrentListings => this.Listings;
+    public IReadOnlyDictionary<uint, IPartyFinderListing> CurrentListings => this.Listings;
 
     internal PartyFinder(ISigScanner scanner, IPartyFinderGui partyFinderGui, IGameInteropProvider interop, Hooks hooks) {
         this.PartyFinderGui = partyFinderGui;
@@ -92,7 +92,7 @@ public class PartyFinder : IDisposable {
         this.RequestPfListingsHook?.Dispose();
     }
 
-    private void ReceiveListing(PartyFinderListing listing, PartyFinderListingEventArgs args) {
+    private void ReceiveListing(IPartyFinderListing listing, IPartyFinderListingEventArgs args) {
         if (args.BatchNumber != this.LastBatch) {
             this.Listings.Clear();
         }

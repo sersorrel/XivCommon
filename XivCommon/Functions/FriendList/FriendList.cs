@@ -25,9 +25,9 @@ public class FriendList {
     public unsafe IList<FriendListEntry> List {
         get {
             var friendListAgent = (IntPtr) Framework.Instance()
-                        ->GetUiModule()
+                        ->UIModule
                     ->GetAgentModule()
-                ->GetAgentByInternalId(AgentId.SocialFriendList);
+                ->GetAgentByInternalId(AgentId.Friendlist);
             if (friendListAgent == IntPtr.Zero) {
                 return Array.Empty<FriendListEntry>();
             }

@@ -52,7 +52,7 @@ public class DutyFinder {
             throw new InvalidOperationException("Could not find signature for open duty function");
         }
 
-        var agent = (IntPtr) Framework.Instance()->GetUiModule()->GetAgentModule()->GetAgentByInternalId(AgentId.ContentsFinder);
+        var agent = (IntPtr) Framework.Instance()->UIModule->GetAgentModule()->GetAgentByInternalId(AgentId.ContentsFinder);
 
         this._openDuty(agent, contentFinderCondition, 0);
     }
@@ -74,7 +74,7 @@ public class DutyFinder {
             throw new InvalidOperationException("Could not find signature for open roulette function");
         }
 
-        var agent = (IntPtr) Framework.Instance()->GetUiModule()->GetAgentModule()->GetAgentByInternalId(AgentId.ContentsFinder);
+        var agent = (IntPtr) Framework.Instance()->UIModule->GetAgentModule()->GetAgentByInternalId(AgentId.ContentsFinder);
 
         this._openRoulette(agent, roulette, 0);
     }

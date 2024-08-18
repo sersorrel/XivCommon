@@ -100,7 +100,7 @@ public class NamePlates : IDisposable {
             return;
         }
 
-        var atkModule = Framework.Instance()->GetUiModule()->GetRaptureAtkModule();
+        var atkModule = Framework.Instance()->UIModule->GetRaptureAtkModule();
 
         var active = numbers->IntArray[0];
 
@@ -125,7 +125,7 @@ public class NamePlates : IDisposable {
             }
 
             var npObjIndex = numbers->IntArray[numbersIndex + NamePlateObjectIndex];
-            var info = (&atkModule->NamePlateInfoArray)[npObjIndex];
+            var info = atkModule->NamePlateInfoEntries[npObjIndex];
 
             var icon = numbers->IntArray[numbersIndex + IconIndex];
             var nameColour = *(ByteColor*) &numbers->IntArray[numbersIndex + ColourIndex];
@@ -147,7 +147,7 @@ public class NamePlates : IDisposable {
             var letterRaw = strings->StringArray[EnemyLetterIndex + i];
             var letter = Util.ReadSeString((IntPtr) letterRaw);
 
-            var args = new NamePlateUpdateEventArgs(info.ObjectID.ObjectID) {
+            var args = new NamePlateUpdateEventArgs(info.ObjectId.ObjectId) {
                 Name = new SeString(name.Payloads),
                 FreeCompany = new SeString(fc.Payloads),
                 Title = new SeString(title.Payloads),

@@ -36,7 +36,7 @@ public class BattleTalk : IDisposable {
     internal unsafe BattleTalk(IGameInteropProvider interop, bool hook) {
         this.HookEnabled = hook;
 
-        var addBattleTalkPtr = (IntPtr) Framework.Instance()->GetUiModule()->VTable->ShowBattleTalk;
+        var addBattleTalkPtr = (IntPtr)Framework.Instance()->UIModule->VirtualTable->ShowBattleTalk;
         if (addBattleTalkPtr != IntPtr.Zero) {
             this.AddBattleTalk = Marshal.GetDelegateForFunctionPointer<AddBattleTalkDelegate>(addBattleTalkPtr);
 
@@ -125,7 +125,7 @@ public class BattleTalk : IDisposable {
 
         options ??= new BattleTalkOptions();
 
-        var uiModule = (IntPtr) Framework.Instance()->GetUiModule();
+        var uiModule = (IntPtr)Framework.Instance()->UIModule;
 
         fixed (byte* senderPtr = sender.Terminate(), messagePtr = message.Terminate()) {
             if (this.HookEnabled) {

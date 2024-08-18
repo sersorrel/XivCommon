@@ -45,7 +45,7 @@ public class Journal {
             throw new InvalidOperationException("Could not find signature for open quest function");
         }
 
-        var agent = (IntPtr) Framework.Instance()->GetUiModule()->GetAgentModule()->GetAgentByInternalId(AgentId.Journal);
+        var agent = (IntPtr) Framework.Instance()->UIModule->GetAgentModule()->GetAgentByInternalId(AgentId.QuestJournal);
 
         this._openQuest(agent, (int) (questId & 0xFFFF), 1, 0, 1);
     }

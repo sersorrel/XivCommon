@@ -30,12 +30,12 @@ public class ChatBubbles : IDisposable {
     /// <summary>
     /// The delegate for chat bubble events.
     /// </summary>
-    public delegate void OnChatBubbleDelegate(ref GameObject @object, ref SeString text);
+    public delegate void OnChatBubbleDelegate(ref IGameObject @object, ref SeString text);
 
     /// <summary>
     /// The delegate for chat bubble update events.
     /// </summary>
-    public delegate void OnUpdateChatBubbleDelegate(ref GameObject @object);
+    public delegate void OnUpdateChatBubbleDelegate(ref IGameObject @object);
 
     /// <summary>
     /// <para>

@@ -27,6 +27,14 @@
         <Dalamud>$(DALAMUD_HOME)</Dalamud>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))'">
+        <Dalamud>$(DALAMUD_HOME)</Dalamud>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))'">
+        <Dalamud>$(HOME)\.xlcore\dalamud\Hooks\dev\</Dalamud>
+    </PropertyGroup>
+
     <PropertyGroup Condition="'$(IsCI)' == 'true'">
         <Dalamud>$(HOME)/dalamud</Dalamud>
     </PropertyGroup>
